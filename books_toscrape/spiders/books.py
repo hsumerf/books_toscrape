@@ -7,6 +7,9 @@ class BooksSpider(CrawlSpider):
     allowed_domains = ['books.toscrape.com']
     start_urls = ['http://books.toscrape.com/']
     #extract all the urls which are in index page and send requests but dont follow their urls
-    rules = (Rule(LinkExtractor(),callback='parse_page',follow=False),)
+    #rules = (Rule(LinkExtractor(),callback='parse_page',follow=False),)
+    # extract all the urls which are in index page and send requests, follow their urls too
+    rules = (Rule(LinkExtractor(), callback='parse_page', follow=True),)
+
     def parse_page(self, response):
         pass
